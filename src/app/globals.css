@@ -436,6 +436,17 @@ summary:focus-visible {
   gap: 0.55rem;
 }
 
+.home-how .feature-card {
+  transition: transform 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.home-how .feature-card:hover,
+.home-how .feature-card:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(208, 42, 42, 0.42);
+  background: rgba(18, 20, 26, 0.84);
+}
+
 .feature-card h3,
 .feature-card p {
   margin: 0;

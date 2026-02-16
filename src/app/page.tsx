@@ -10,19 +10,19 @@ export const metadata: Metadata = {
 
 const HOW_IT_WORKS = [
   {
-    iconId: "icon_07",
-    title: "Confirm availability",
-    copy: "Candidates confirm from the evening before, giving schools a clear early view.",
-  },
-  {
     iconId: "icon_01",
-    title: "Match instantly",
-    copy: "Live availability signals route the right educators to urgent requests quickly.",
+    title: "Confirm availability",
+    copy: "Candidates confirm daily availability in a tight window — so you only see people who can actually work.",
   },
   {
     iconId: "icon_06",
+    title: "Match instantly",
+    copy: "Schools see vetted, available candidates in real time and request cover in minutes.",
+  },
+  {
+    iconId: "icon_05",
     title: "Book with confidence",
-    copy: "Every booking is tracked, timestamped, and visible for operational confidence.",
+    copy: "Confirmations, audit trail and support are built-in — no messy spreadsheets.",
   },
 ] as const;
 
@@ -41,10 +41,10 @@ export default function HomePage() {
         secondaryCta={{ label: "Join as a Candidate", href: "/candidates" }}
       />
 
-      <section className="shell-card shell-stack">
+      <section className="shell-card shell-stack home-how">
         <header className="section-head shell-stack">
-          <p className="section-eyebrow">How It Works</p>
-          <h2 className="section-title">Built for fast, structured emergency cover</h2>
+          <h2 className="section-title">How it works</h2>
+          <p className="hero-lede">A faster way to book emergency cover — without the back and forth.</p>
         </header>
         <div className="feature-grid feature-grid--three">
           {HOW_IT_WORKS.map((item) => (
