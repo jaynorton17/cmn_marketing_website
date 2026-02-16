@@ -868,6 +868,155 @@ summary:focus-visible {
   margin-top: 0.7rem;
 }
 
+.candidates-page {
+  gap: 1.2rem;
+}
+
+.candidates-daily__layout,
+.candidates-bookings__layout {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+}
+
+.candidates-daily__content,
+.candidates-bookings__content {
+  gap: 0.65rem;
+}
+
+.candidates-bookings__content p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.candidates-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.candidates-points__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.candidates-points__icon {
+  width: 2.3rem;
+  aspect-ratio: 1;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.35rem;
+  flex-shrink: 0;
+}
+
+.candidates-points__icon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.candidates-daily__media,
+.candidates-bookings__media {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.95rem;
+  overflow: hidden;
+  background: rgba(12, 14, 18, 0.8);
+  width: min(100%, 620px);
+  margin-inline: auto;
+  aspect-ratio: 16 / 10;
+}
+
+.candidates-daily__media-image,
+.candidates-bookings__media-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.candidates-rewards {
+  position: relative;
+  overflow: hidden;
+}
+
+.candidates-rewards__bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.11;
+  pointer-events: none;
+}
+
+.candidates-rewards__bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.candidates-rewards__content {
+  position: relative;
+  z-index: 1;
+  gap: 0.75rem;
+}
+
+.candidates-rewards__header {
+  display: grid;
+  gap: 0.95rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.candidates-rewards__copy {
+  gap: 0.6rem;
+}
+
+.candidates-rewards__copy .hero-lede {
+  margin: 0;
+}
+
+.candidates-rewards__laptop {
+  width: min(100%, 22rem);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.9rem;
+  overflow: hidden;
+  background: rgba(12, 14, 18, 0.8);
+  aspect-ratio: 16 / 10;
+}
+
+.candidates-rewards__laptop-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.candidates-rewards__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.candidates-cta {
+  text-align: left;
+  background: var(--panel-strong);
+}
+
+.candidates-cta h2 {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+}
+
+.candidates-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+}
+
 .feature-card h3,
 .feature-card p {
   margin: 0;
@@ -1352,6 +1501,33 @@ summary:focus-visible {
 
   .schools-compliance__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .candidates-daily__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .candidates-daily__media {
+    justify-self: end;
+  }
+
+  .candidates-bookings__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .candidates-bookings__media {
+    justify-self: start;
+  }
+
+  .candidates-rewards__header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .candidates-rewards__laptop {
+    justify-self: end;
   }
 
   .compliance-trust__header {
