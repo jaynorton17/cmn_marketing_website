@@ -16,7 +16,7 @@ type SectionConfig = {
   key: Exclude<CategoryKey, "all">;
   label: string;
   previewClassName: string;
-  imageType: "background" | "graphic" | "icon" | "laptop" | "logo";
+  imageCategory: "background" | "graphic" | "icon" | "laptop" | "logo";
   wrapperClassName?: string;
   items: readonly AssetItem[];
 };
@@ -26,7 +26,7 @@ const SECTION_CONFIG: SectionConfig[] = [
     key: "backgrounds",
     label: "Backgrounds",
     previewClassName: "asset-preview--background",
-    imageType: "background",
+    imageCategory: "background",
     wrapperClassName: "shell-stack",
     items: ASSETS.backgrounds,
   },
@@ -34,7 +34,7 @@ const SECTION_CONFIG: SectionConfig[] = [
     key: "graphics",
     label: "Graphics",
     previewClassName: "asset-preview--graphic",
-    imageType: "graphic",
+    imageCategory: "graphic",
     wrapperClassName: "asset-grid asset-grid--graphics",
     items: ASSETS.graphics,
   },
@@ -42,7 +42,7 @@ const SECTION_CONFIG: SectionConfig[] = [
     key: "icons",
     label: "Icons",
     previewClassName: "asset-preview--icon",
-    imageType: "icon",
+    imageCategory: "icon",
     wrapperClassName: "asset-grid asset-grid--icons",
     items: ASSETS.icons,
   },
@@ -50,7 +50,7 @@ const SECTION_CONFIG: SectionConfig[] = [
     key: "laptopui",
     label: "Laptop UI",
     previewClassName: "asset-preview--laptop",
-    imageType: "laptop",
+    imageCategory: "laptop",
     wrapperClassName: "asset-grid asset-grid--laptop",
     items: ASSETS.laptopui,
   },
@@ -58,7 +58,7 @@ const SECTION_CONFIG: SectionConfig[] = [
     key: "logo",
     label: "Logo",
     previewClassName: "asset-preview--logo",
-    imageType: "logo",
+    imageCategory: "logo",
     wrapperClassName: "shell-stack",
     items: [ASSETS.logo],
   },
@@ -227,7 +227,7 @@ export default function AssetsPage() {
             {section.items.map((asset) => (
               <article key={asset.id} className={`asset-item shell-stack${section.key === "backgrounds" ? " asset-item--background" : ""}`}>
                 <div className={`asset-preview ${section.previewClassName}`}>
-                  <AssetImage type={section.imageType} id={asset.id} alt={asset.id} className="asset-preview__img" />
+                  <AssetImage category={section.imageCategory} id={asset.id} alt={asset.id} className="asset-preview__img" />
                 </div>
                 <AssetMeta id={asset.id} path={asset.path} onCopyId={handleCopyId} copied={copiedId === asset.id} />
               </article>
