@@ -45,7 +45,7 @@ Quick QA pass before deploying responsive updates:
   - `/schools`
   - `/candidates`
   - `/services`
-  - `/contact`
+  - `/contact-us`
   - `/assets` (dev route)
 - Key viewports:
   - `390x844` (iPhone 12/13/14)
@@ -64,3 +64,37 @@ Quick QA pass before deploying responsive updates:
 - Image checks:
   - No visible layout shift when images load
   - Hero/background imagery keeps readable text contrast and does not crop key content awkwardly
+
+## Lighthouse Checklist
+
+Pages tested:
+
+- `/`
+- `/schools`
+- `/candidates`
+- `/services`
+- `/contact-us`
+
+Scores after changes:
+
+- Environment note: this sandbox cannot bind local ports (`listen EPERM`), so Lighthouse could not be executed here.
+- Run locally with:
+  - `npm run build`
+  - `npm run start -- --hostname 127.0.0.1 --port 3010`
+  - `npx lighthouse http://127.0.0.1:3010 --view`
+- Record scores for:
+  - Performance
+  - Accessibility
+  - Best Practices
+  - SEO
+
+What was improved:
+
+- Migrated registry images to `next/image` via `src/components/AssetImage.tsx` (responsive `sizes`, quality hints, lazy by default, priority for hero imagery).
+- Added explicit decorative image handling (`alt=""`, `aria-hidden`) for non-informational graphics/icons.
+- Reduced expensive visual effects (lighter glass blur/glow and mobile fallbacks).
+- Added stronger keyboard focus visibility for nav/footer links and buttons.
+- Tightened contact form semantics (`required` + `autocomplete`) and maintained labeled controls.
+- Added stable metadata base + canonical handling in `src/app/layout.tsx` for more reliable OG/canonical output.
+- Build output snapshot after these changes:
+  - `/` route payload dropped from `1.44 kB` to `194 B` (static route size in `next build` output).

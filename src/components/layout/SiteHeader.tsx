@@ -5,19 +5,15 @@ import { useEffect, useId, useState } from "react";
 import { usePathname } from "next/navigation";
 import CTAButton from "../CTAButton";
 
-type SiteHeaderProps = {
-  showAssetsLink: boolean;
-};
-
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
   { href: "/schools", label: "Schools" },
   { href: "/candidates", label: "Candidates" },
   { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact-us", label: "Contact" },
 ] as const;
 
-export default function SiteHeader({ showAssetsLink }: SiteHeaderProps) {
+export default function SiteHeader() {
   const pathname = usePathname();
   const mobileMenuId = useId();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -49,6 +45,7 @@ export default function SiteHeader({ showAssetsLink }: SiteHeaderProps) {
           className="site-shell__menu-toggle"
           aria-expanded={menuOpen ? "true" : "false"}
           aria-controls={mobileMenuId}
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
           onClick={() => setMenuOpen((current) => !current)}
         >
           <span className="site-shell__menu-toggle-label">Menu</span>
@@ -67,17 +64,12 @@ export default function SiteHeader({ showAssetsLink }: SiteHeaderProps) {
                   <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
-              {showAssetsLink ? (
-                <li>
-                  <Link href="/assets">Assets</Link>
-                </li>
-              ) : null}
             </ul>
           </nav>
 
           <div className="site-shell__header-ctas">
-            <CTAButton href="/contact-us" variant="secondary">
-              Book a Demo
+            <CTAButton href="/covermenow-one" variant="secondary">
+              Apply to register
             </CTAButton>
             <CTAButton href="/covermenow-one" variant="primary">
               Enter CMN ONE
@@ -95,17 +87,12 @@ export default function SiteHeader({ showAssetsLink }: SiteHeaderProps) {
                   <Link href={item.href}>{item.label}</Link>
                 </li>
               ))}
-              {showAssetsLink ? (
-                <li>
-                  <Link href="/assets">Assets</Link>
-                </li>
-              ) : null}
             </ul>
           </nav>
 
           <div className="site-shell__mobile-ctas">
-            <CTAButton href="/contact-us" variant="secondary">
-              Book a Demo
+            <CTAButton href="/covermenow-one" variant="secondary">
+              Apply to register
             </CTAButton>
             <CTAButton href="/covermenow-one" variant="primary">
               Enter CMN ONE
