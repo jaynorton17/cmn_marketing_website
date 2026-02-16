@@ -1,70 +1,138 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ASSETS } from "../../assets/assetRegistry";
 import AssetImage from "../../components/AssetImage";
 import MarketingHero from "../../components/MarketingHero";
 
 export const metadata: Metadata = {
   title: "Schools",
-  description: "Book emergency cover in minutes with full visibility and control.",
+  description: "Book emergency cover in minutes with visibility, confirmations and compliance built in.",
 };
+
+const HERO_LAPTOP_ID = ASSETS.laptopui.some((asset) => asset.id === "laptop_06") ? "laptop_06" : "laptop_01";
+const ENGINE_LAPTOP_ID = ASSETS.laptopui.some((asset) => asset.id === "laptop_11") ? "laptop_11" : "laptop_01";
+const TRACKING_LAPTOP_ID = ASSETS.laptopui.some((asset) => asset.id === "laptop_09") ? "laptop_09" : "laptop_01";
+
+const ENGINE_POINTS = [
+  { iconId: "icon_01", label: "See only available candidates" },
+  { iconId: "icon_07", label: "Instant confirmation workflow" },
+  { iconId: "icon_06", label: "Audit trail by default" },
+] as const;
+
+const TRUST_ITEMS = [
+  { iconId: "icon_05", label: "Safeguarding visibility" },
+  { iconId: "icon_06", label: "Booking history" },
+  { iconId: "icon_07", label: "Support + escalation" },
+] as const;
 
 export default function SchoolsPage() {
   return (
-    <div className="shell-container shell-stack marketing-page">
+    <div className="shell-container shell-stack marketing-page schools-page">
       <MarketingHero
         backgroundId="bg_01"
         overlayGraphicId="gfx_05"
-        laptopId="laptop_06"
-        eyebrow="Schools"
+        laptopId={HERO_LAPTOP_ID}
+        eyebrow="For Schools"
         title="For Schools"
-        subtitle="Book emergency cover in minutes — with full visibility and control."
-        primaryCta={{ label: "Request a demo", href: "/contact" }}
+        subtitle="Book emergency cover in minutes — with visibility, confirmations and compliance built in."
+        primaryCta={{ label: "Book a Demo", href: "/contact-us" }}
+        secondaryCta={{ label: "Enter CMN ONE", href: "/covermenow-one" }}
       />
 
-      <section className="shell-card feature-slab">
-        <div className="feature-slab__media">
-          <AssetImage category="laptop" id="laptop_11" alt="Live availability engine screenshot" className="feature-slab__media-image" />
-        </div>
-        <div className="feature-slab__content shell-stack">
-          <p className="section-eyebrow">Section 1</p>
-          <h2>Live Availability Engine</h2>
-          <p>
-            See who is ready to work before the school day starts, so urgent cover can be arranged quickly and confidently.
-          </p>
+      <section className="shell-card schools-engine">
+        <div className="schools-engine__layout">
+          <div className="schools-engine__content shell-stack">
+            <h2 className="section-title">Live Availability Engine</h2>
+            <p className="hero-lede">
+              Confirmed availability drives every recommendation, so your operations team spends less time chasing and more time booking.
+            </p>
+
+            <ul className="schools-points">
+              {ENGINE_POINTS.map((point) => (
+                <li key={point.label} className="schools-points__item">
+                  <span className="schools-points__icon">
+                    <AssetImage category="icons" id={point.iconId} alt={point.label} className="schools-points__icon-image" />
+                  </span>
+                  <span>{point.label}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="schools-engine__media">
+            <AssetImage
+              category="laptopui"
+              id={ENGINE_LAPTOP_ID}
+              alt="Live availability engine dashboard"
+              className="schools-engine__media-image"
+            />
+          </div>
         </div>
       </section>
 
-      <section className="shell-card feature-slab feature-slab--reverse">
-        <div className="feature-slab__media">
-          <AssetImage category="laptop" id="laptop_09" alt="Confirmations and tracking screenshot" className="feature-slab__media-image" />
-        </div>
-        <div className="feature-slab__content shell-stack">
-          <p className="section-eyebrow">Section 2</p>
-          <h2>Confirmations &amp; Tracking</h2>
-          <p>
-            Follow every request and booking status in one timeline, with clear confirmations for operational teams and leadership.
-          </p>
+      <section className="shell-card schools-tracking">
+        <div className="schools-tracking__layout">
+          <div className="schools-tracking__media">
+            <AssetImage
+              category="laptopui"
+              id={TRACKING_LAPTOP_ID}
+              alt="Confirmations and tracking dashboard"
+              className="schools-tracking__media-image"
+            />
+          </div>
+
+          <div className="schools-tracking__content shell-stack">
+            <h2 className="section-title">Confirmations &amp; Tracking</h2>
+            <p>
+              Every request, confirmation, and update is visible from first contact to completed booking.
+            </p>
+            <p>
+              Leaders and coordinators get shared visibility, so decisions are faster and accountability stays clear.
+            </p>
+            <p>
+              With structured tracking in one place, emergency cover becomes consistent rather than reactive.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section className="shell-card feature-slab">
-        <div className="feature-slab__media">
-          <AssetImage category="graphic" id="gfx_01" alt="Compliance and peace of mind visual" className="feature-slab__media-image" />
+      <section className="shell-card schools-compliance">
+        <div className="schools-compliance__bg" aria-hidden="true">
+          <AssetImage category="graphics" id="gfx_01" alt="" className="schools-compliance__bg-image" />
         </div>
-        <div className="feature-slab__content shell-stack">
-          <p className="section-eyebrow">Section 3</p>
-          <h2>Compliance &amp; Peace of Mind</h2>
-          <p>
-            Keep compliance checks, booking history, and communication records aligned so emergency cover remains secure and auditable.
+
+        <div className="schools-compliance__content shell-stack">
+          <h2 className="section-title">Compliance &amp; Peace of Mind</h2>
+          <p className="hero-lede">
+            Keep safeguarding, record-keeping, and operational response aligned without adding manual admin overhead.
           </p>
+
+          <div className="schools-compliance__grid">
+            {TRUST_ITEMS.map((item) => (
+              <article key={item.label} className="schools-compliance__card shell-stack">
+                <span className="schools-compliance__card-icon">
+                  <AssetImage
+                    category="icons"
+                    id={item.iconId}
+                    alt={item.label}
+                    className="schools-compliance__card-icon-image"
+                  />
+                </span>
+                <h3>{item.label}</h3>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="shell-card cta-strip shell-stack">
-        <h2>Need structured emergency cover for your school group?</h2>
-        <div>
-          <Link className="btn btn--primary" href="/contact">
-            Request a demo
+      <section className="shell-card schools-cta">
+        <h2>Ready to book emergency cover without the chaos?</h2>
+        <div className="schools-cta__actions">
+          <Link className="btn btn--primary" href="/covermenow-one">
+            Enter CMN ONE
+          </Link>
+          <Link className="btn btn--ghost" href="/contact-us">
+            Book a Demo
           </Link>
         </div>
       </section>
