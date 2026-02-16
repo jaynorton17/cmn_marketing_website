@@ -29,6 +29,8 @@ export type AssetImageProps = {
   alt?: string;
   className?: string;
   priority?: boolean;
+  width?: number;
+  height?: number;
 };
 
 function normalizeCategory(category: AssetCategory): "backgrounds" | "graphics" | "icons" | "laptopui" | "logo" {
@@ -74,8 +76,27 @@ function resolvePath(category: AssetCategory, id: string): string | null {
   }
 }
 
-export default function AssetImage({ category, id, alt, className, priority = false }: AssetImageProps) {
+function resolveIntrinsicSize(
+  category: "backgrounds" | "graphics" | "icons" | "laptopui" | "logo",
+): { width: number; height: number } {
+  switch (category) {
+    case "backgrounds":
+      return { width: 1920, height: 1080 };
+    case "graphics":
+      return { width: 1400, height: 900 };
+    case "icons":
+      return { width: 512, height: 512 };
+    case "laptopui":
+      return { width: 1600, height: 1000 };
+    default:
+      return { width: 1200, height: 360 };
+  }
+}
+
+export default function AssetImage({ category, id, alt, className, priority = false, width, height }: AssetImageProps) {
+  const normalizedCategory = normalizeCategory(category);
   const resolvedPath = resolvePath(category, id);
+  const intrinsic = resolveIntrinsicSize(normalizedCategory);
 
   if (!resolvedPath) {
     const fallbackText = `Missing asset: ${category}:${id}`;
@@ -95,6 +116,8 @@ export default function AssetImage({ category, id, alt, className, priority = fa
       loading={priority ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : "auto"}
       decoding="async"
+      width={width ?? intrinsic.width}
+      height={height ?? intrinsic.height}
       className={className}
       onError={() => console.warn(`Missing asset file: ${resolvedPath}`)}
     />

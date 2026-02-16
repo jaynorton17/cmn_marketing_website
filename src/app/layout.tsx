@@ -1,7 +1,7 @@
 import "./globals.css";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
-import CTAButton from "../components/CTAButton";
+import SiteHeader from "../components/layout/SiteHeader";
 import { tokenCssVariables } from "../styles/tokens";
 
 export const metadata = {
@@ -11,14 +11,6 @@ export const metadata = {
   },
   description: "Real-time recruitment infrastructure for education cover.",
 };
-
-const NAV_ITEMS = [
-  { href: "/", label: "Home" },
-  { href: "/schools", label: "Schools" },
-  { href: "/candidates", label: "Candidates" },
-  { href: "/services", label: "Services" },
-  { href: "/contact", label: "Contact" },
-] as const;
 
 const bodyTokenStyle = tokenCssVariables as unknown as CSSProperties;
 
@@ -33,39 +25,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
 
-        <header className="site-shell__header u-glass u-shadow-soft">
-          <div className="shell-container site-shell__header-inner">
-            <Link className="site-shell__brand" href="/">
-              CoverMeNow ONE
-            </Link>
-
-            <div className="site-shell__header-right">
-              <nav aria-label="Global navigation">
-                <ul className="site-shell__nav">
-                  {NAV_ITEMS.map((item) => (
-                    <li key={item.href}>
-                      <Link href={item.href}>{item.label}</Link>
-                    </li>
-                  ))}
-                  {showAssetsLink ? (
-                    <li>
-                      <Link href="/assets">Assets</Link>
-                    </li>
-                  ) : null}
-                </ul>
-              </nav>
-
-              <div className="site-shell__header-ctas">
-                <CTAButton href="/contact-us" variant="secondary">
-                  Book a Demo
-                </CTAButton>
-                <CTAButton href="/covermenow-one" variant="primary">
-                  Enter CMN ONE
-                </CTAButton>
-              </div>
-            </div>
-          </div>
-        </header>
+        <SiteHeader showAssetsLink={showAssetsLink} />
 
         <main id="main-content" className="site-shell__main">
           {children}
