@@ -1,36 +1,125 @@
-import type { ReactNode } from "react";
+import Link from "next/link";
 import AssetImage from "./AssetImage";
-import type { BackgroundId, GraphicId } from "../assets/assetRegistry";
+import {
+  ASSETS,
+  type BackgroundId,
+  type GraphicId,
+  type LaptopId,
+} from "../assets/assetRegistry";
+
+type HeroCta = {
+  label: string;
+  href: string;
+};
 
 type MarketingHeroProps = {
-  backgroundId: BackgroundId;
-  overlayGraphicId?: GraphicId;
-  overlayGraphicOpacity?: number;
-  children: ReactNode;
+  backgroundId?: BackgroundId | string;
+  overlayGraphicId?: GraphicId | string;
+  laptopId?: LaptopId | string;
+  title: string;
+  subtitle: string;
+  primaryCta?: HeroCta;
+  secondaryCta?: HeroCta;
   className?: string;
+  eyebrow?: string;
+  showLogo?: boolean;
 };
+
+const FALLBACK_BACKGROUND_ID: BackgroundId = "bg_03";
+
+function isBackgroundId(value: string | undefined): value is BackgroundId {
+  if (!value) {
+    return false;
+  }
+
+  return ASSETS.backgrounds.some((asset) => asset.id === value);
+}
+
+function isGraphicId(value: string | undefined): value is GraphicId {
+  if (!value) {
+    return false;
+  }
+
+  return ASSETS.graphics.some((asset) => asset.id === value);
+}
+
+function isLaptopId(value: string | undefined): value is LaptopId {
+  if (!value) {
+    return false;
+  }
+
+  return ASSETS.laptopui.some((asset) => asset.id === value);
+}
 
 export default function MarketingHero({
   backgroundId,
   overlayGraphicId,
-  overlayGraphicOpacity = 0.2,
-  children,
+  laptopId,
+  title,
+  subtitle,
+  primaryCta,
+  secondaryCta,
   className,
+  eyebrow,
+  showLogo = false,
 }: MarketingHeroProps) {
+  const resolvedBackgroundId = isBackgroundId(backgroundId) ? backgroundId : FALLBACK_BACKGROUND_ID;
+  const resolvedOverlayId = isGraphicId(overlayGraphicId) ? overlayGraphicId : null;
+  const resolvedLaptopId = isLaptopId(laptopId) ? laptopId : null;
+
   return (
     <section className={`hero-shell${className ? ` ${className}` : ""}`}>
       <div className="hero-shell__bg" aria-hidden="true">
-        <AssetImage category="background" id={backgroundId} alt="" className="hero-shell__bg-image" priority />
+        <AssetImage category="backgrounds" id={resolvedBackgroundId} alt="" className="hero-shell__bg-image" priority />
       </div>
 
-      {overlayGraphicId ? (
-        <div className="hero-shell__graphic" style={{ opacity: overlayGraphicOpacity }} aria-hidden="true">
-          <AssetImage category="graphic" id={overlayGraphicId} alt="" className="hero-shell__graphic-image" />
+      {resolvedOverlayId ? (
+        <div className="hero-shell__graphic" style={{ opacity: 0.1 }} aria-hidden="true">
+          <AssetImage category="graphics" id={resolvedOverlayId} alt="" className="hero-shell__graphic-image" />
         </div>
       ) : null}
 
       <div className="hero-shell__overlay" aria-hidden="true" />
-      <div className="hero-shell__content">{children}</div>
+
+      <div className="hero-shell__content">
+        <div className={`hero-layout${resolvedLaptopId ? "" : " hero-layout--single"}`}>
+          <div className="hero-copy shell-stack">
+            {showLogo ? (
+              <div className="home-hero__brand">
+                <AssetImage category="logo" id={ASSETS.logo.id} alt="CoverMeNow ONE logo" className="home-hero__logo" />
+              </div>
+            ) : null}
+
+            {eyebrow ? <p className="section-eyebrow">{eyebrow}</p> : null}
+
+            <h1 className="hero-title">{title}</h1>
+            <p className="hero-lede">{subtitle}</p>
+
+            {primaryCta || secondaryCta ? (
+              <div className="hero-actions">
+                {primaryCta ? (
+                  <Link className="btn btn--primary" href={primaryCta.href}>
+                    {primaryCta.label}
+                  </Link>
+                ) : null}
+                {secondaryCta ? (
+                  <Link className="btn btn--ghost" href={secondaryCta.href}>
+                    {secondaryCta.label}
+                  </Link>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+
+          {resolvedLaptopId ? (
+            <div className={showLogo ? "home-hero__device" : "hero-device-card"}>
+              <div className={`hero-device-media${showLogo ? " home-hero__device-media" : ""}`}>
+                <AssetImage category="laptopui" id={resolvedLaptopId} alt={`${title} dashboard preview`} className="hero-device-image" />
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </div>
     </section>
   );
 }

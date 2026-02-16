@@ -33,21 +33,13 @@ const SERVICES = [
 export default function ServicesPage() {
   return (
     <div className="shell-container shell-stack marketing-page">
-      <MarketingHero backgroundId="bg_04">
-        <div className="hero-layout">
-          <div className="hero-copy shell-stack">
-            <p className="section-eyebrow">Platform Services</p>
-            <h1 className="hero-title">Services</h1>
-            <p className="hero-lede">Everything you need to run emergency cover properly.</p>
-          </div>
-
-          <div className="hero-device-card">
-            <div className="hero-device-media">
-              <AssetImage category="laptop" id="laptop_01" alt="Services dashboard preview" className="hero-device-image" />
-            </div>
-          </div>
-        </div>
-      </MarketingHero>
+      <MarketingHero
+        backgroundId="bg_04"
+        laptopId="laptop_01"
+        eyebrow="Platform Services"
+        title="Services"
+        subtitle="Everything you need to run emergency cover properly."
+      />
 
       <section className="shell-card shell-stack">
         <header className="section-head shell-stack">

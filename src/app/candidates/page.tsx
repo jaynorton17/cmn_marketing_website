@@ -11,26 +11,15 @@ export const metadata: Metadata = {
 export default function CandidatesPage() {
   return (
     <div className="shell-container shell-stack marketing-page">
-      <MarketingHero backgroundId="bg_02" overlayGraphicId="gfx_04" overlayGraphicOpacity={0.14}>
-        <div className="hero-layout">
-          <div className="hero-copy shell-stack">
-            <p className="section-eyebrow">Candidates</p>
-            <h1 className="hero-title">For Candidates</h1>
-            <p className="hero-lede">Confirm daily availability, get booked faster, and build rewards.</p>
-            <div className="hero-actions">
-              <Link className="btn btn--primary" href="/contact">
-                Create your profile
-              </Link>
-            </div>
-          </div>
-
-          <div className="hero-device-card">
-            <div className="hero-device-media">
-              <AssetImage category="laptop" id="laptop_12" alt="Candidate dashboard preview" className="hero-device-image" />
-            </div>
-          </div>
-        </div>
-      </MarketingHero>
+      <MarketingHero
+        backgroundId="bg_02"
+        overlayGraphicId="gfx_04"
+        laptopId="laptop_12"
+        eyebrow="Candidates"
+        title="For Candidates"
+        subtitle="Confirm daily availability, get booked faster, and build rewards."
+        primaryCta={{ label: "Create your profile", href: "/contact" }}
+      />
 
       <section className="shell-card feature-slab">
         <div className="feature-slab__media">

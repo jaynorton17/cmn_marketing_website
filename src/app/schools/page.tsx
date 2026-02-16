@@ -11,26 +11,15 @@ export const metadata: Metadata = {
 export default function SchoolsPage() {
   return (
     <div className="shell-container shell-stack marketing-page">
-      <MarketingHero backgroundId="bg_01" overlayGraphicId="gfx_05" overlayGraphicOpacity={0.14}>
-        <div className="hero-layout">
-          <div className="hero-copy shell-stack">
-            <p className="section-eyebrow">Schools</p>
-            <h1 className="hero-title">For Schools</h1>
-            <p className="hero-lede">Book emergency cover in minutes — with full visibility and control.</p>
-            <div className="hero-actions">
-              <Link className="btn btn--primary" href="/contact">
-                Request a demo
-              </Link>
-            </div>
-          </div>
-
-          <div className="hero-device-card">
-            <div className="hero-device-media">
-              <AssetImage category="laptop" id="laptop_06" alt="School dashboard view" className="hero-device-image" />
-            </div>
-          </div>
-        </div>
-      </MarketingHero>
+      <MarketingHero
+        backgroundId="bg_01"
+        overlayGraphicId="gfx_05"
+        laptopId="laptop_06"
+        eyebrow="Schools"
+        title="For Schools"
+        subtitle="Book emergency cover in minutes — with full visibility and control."
+        primaryCta={{ label: "Request a demo", href: "/contact" }}
+      />
 
       <section className="shell-card feature-slab">
         <div className="feature-slab__media">

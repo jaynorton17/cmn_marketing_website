@@ -12,7 +12,16 @@ import {
   type LaptopId,
 } from "../assets/assetRegistry";
 
-type AssetCategory = "background" | "graphic" | "icon" | "laptop" | "logo";
+type AssetCategory =
+  | "background"
+  | "backgrounds"
+  | "graphic"
+  | "graphics"
+  | "icon"
+  | "icons"
+  | "laptop"
+  | "laptopui"
+  | "logo";
 
 export type AssetImageProps = {
   category: AssetCategory;
@@ -22,8 +31,26 @@ export type AssetImageProps = {
   priority?: boolean;
 };
 
+function normalizeCategory(category: AssetCategory): "backgrounds" | "graphics" | "icons" | "laptopui" | "logo" {
+  if (category === "background" || category === "backgrounds") {
+    return "backgrounds";
+  }
+  if (category === "graphic" || category === "graphics") {
+    return "graphics";
+  }
+  if (category === "icon" || category === "icons") {
+    return "icons";
+  }
+  if (category === "laptop" || category === "laptopui") {
+    return "laptopui";
+  }
+  return "logo";
+}
+
 function resolvePath(category: AssetCategory, id: string): string | null {
-  if (category === "logo") {
+  const normalizedCategory = normalizeCategory(category);
+
+  if (normalizedCategory === "logo") {
     if (id !== ASSETS.logo.id) {
       console.warn(`AssetImage expected logo id "${ASSETS.logo.id}" but received "${id}"`);
     }
@@ -31,18 +58,18 @@ function resolvePath(category: AssetCategory, id: string): string | null {
   }
 
   try {
-    if (category === "background") {
+    if (normalizedCategory === "backgrounds") {
       return getBackground(id as BackgroundId)?.path ?? null;
     }
-    if (category === "graphic") {
+    if (normalizedCategory === "graphics") {
       return getGraphic(id as GraphicId)?.path ?? null;
     }
-    if (category === "icon") {
+    if (normalizedCategory === "icons") {
       return getIcon(id as IconId)?.path ?? null;
     }
     return getLaptop(id as LaptopId)?.path ?? null;
   } catch (error) {
-    console.warn(`AssetImage failed to resolve ${category}:${id}`, error);
+    console.warn(`AssetImage failed to resolve ${normalizedCategory}:${id}`, error);
     return null;
   }
 }

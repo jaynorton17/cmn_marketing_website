@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ASSETS } from "../assets/assetRegistry";
 import AssetImage from "../components/AssetImage";
 import MarketingHero from "../components/MarketingHero";
 
@@ -27,42 +26,20 @@ const HOW_IT_WORKS = [
   },
 ] as const;
 
-const HOME_HERO_LAPTOP_ID = ASSETS.laptopui.some((asset) => asset.id === "laptop_10") ? "laptop_10" : "laptop_01";
-
 export default function HomePage() {
   return (
     <div className="shell-container shell-stack marketing-page">
-      <MarketingHero className="home-hero" backgroundId="bg_03" overlayGraphicId="gfx_02" overlayGraphicOpacity={0.1}>
-        <div className="hero-layout">
-          <div className="hero-copy shell-stack">
-            <div className="home-hero__brand">
-              <AssetImage category="logo" id="logo_main" alt="CoverMeNow ONE logo" className="home-hero__logo" />
-            </div>
-            <h1 className="hero-title">Recruitment. Rebuilt for Education.</h1>
-            <p className="hero-lede">Real-time availability. Faster bookings. Better cover.</p>
-            <div className="hero-actions">
-              <Link className="btn btn--primary" href="/schools">
-                Book Emergency Cover
-              </Link>
-              <Link className="btn btn--ghost" href="/candidates">
-                Join as a Candidate
-              </Link>
-            </div>
-          </div>
-
-          <div className="home-hero__device">
-            <div className="hero-device-media home-hero__device-media">
-              <AssetImage
-                category="laptop"
-                id={HOME_HERO_LAPTOP_ID}
-                alt="CoverMeNow ONE dashboard preview"
-                className="hero-device-image"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </MarketingHero>
+      <MarketingHero
+        className="home-hero"
+        backgroundId="bg_03"
+        overlayGraphicId="gfx_02"
+        laptopId="laptop_10"
+        showLogo
+        title="Recruitment. Rebuilt for Education."
+        subtitle="Real-time availability. Faster bookings. Better cover."
+        primaryCta={{ label: "Book Emergency Cover", href: "/schools" }}
+        secondaryCta={{ label: "Join as a Candidate", href: "/candidates" }}
+      />
 
       <section className="shell-card shell-stack">
         <header className="section-head shell-stack">
