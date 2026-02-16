@@ -34,6 +34,12 @@ const LIVE_AVAILABILITY_POINTS = [
 ] as const;
 
 const LIVE_AVAILABILITY_LAPTOP_ID = ASSETS.laptopui.some((asset) => asset.id === "laptop_11") ? "laptop_11" : "laptop_01";
+const REWARDS_LOYALTY_POINTS = [
+  "Tiered rewards (Silver → Gold)",
+  "Priority access to bookings",
+  "Partner programme for schools",
+] as const;
+const REWARDS_LOYALTY_LAPTOP_ID = ASSETS.laptopui.some((asset) => asset.id === "laptop_12") ? "laptop_12" : "laptop_08";
 
 export default function HomePage() {
   return (
@@ -109,6 +115,44 @@ export default function HomePage() {
             <div>
               <Link className="btn btn--ghost" href="/schools">
                 See how it works
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="shell-card rewards-loyalty">
+        <div className="rewards-loyalty__bg" aria-hidden="true">
+          <AssetImage category="graphics" id="gfx_06" alt="" className="rewards-loyalty__bg-image" />
+        </div>
+
+        <div className="rewards-loyalty__layout">
+          <div className="rewards-loyalty__visual">
+            <div className="rewards-loyalty__laptop">
+              <AssetImage
+                category="laptopui"
+                id={REWARDS_LOYALTY_LAPTOP_ID}
+                alt="Rewards and loyalty dashboard preview"
+                className="rewards-loyalty__laptop-image"
+              />
+            </div>
+          </div>
+
+          <div className="rewards-loyalty__content shell-stack">
+            <h2 className="section-title">Rewards that build loyalty</h2>
+            <p className="hero-lede">
+              We reward consistency — better availability, better bookings, better outcomes.
+            </p>
+
+            <ul className="rewards-loyalty__list">
+              {REWARDS_LOYALTY_POINTS.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+
+            <div>
+              <Link className="btn btn--primary" href="/candidates">
+                Join as a Candidate
               </Link>
             </div>
           </div>
