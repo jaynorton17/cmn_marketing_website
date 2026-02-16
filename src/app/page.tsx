@@ -62,14 +62,14 @@ export default function HomePage() {
         secondaryCta={{ label: "Join as a Candidate", href: "/candidates" }}
       />
 
-      <section className="shell-card shell-stack home-how">
+      <section className="shell-card u-glass u-shadow-soft shell-stack home-how">
         <header className="section-head shell-stack">
           <h2 className="section-title">How it works</h2>
           <p className="hero-lede">A faster way to book emergency cover — without the back and forth.</p>
         </header>
         <div className="feature-grid feature-grid--three">
           {HOW_IT_WORKS.map((item) => (
-            <article key={item.title} className="feature-card shell-stack">
+            <article key={item.title} className="feature-card shell-stack u-glass u-shadow-soft">
               <div className="feature-card__icon">
                 <AssetImage category="icon" id={item.iconId} alt={item.title} className="feature-card__icon-image" />
               </div>
@@ -80,7 +80,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="shell-card live-availability">
+      <section className="shell-card u-glass u-shadow-soft live-availability">
         <div className="live-availability__bg" aria-hidden="true">
           <AssetImage category="graphics" id="gfx_02" alt="" className="live-availability__bg-image" />
         </div>
@@ -127,7 +127,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="shell-card rewards-loyalty">
+      <section className="shell-card u-glass u-shadow-soft rewards-loyalty">
         <div className="rewards-loyalty__bg" aria-hidden="true">
           <AssetImage category="graphics" id="gfx_06" alt="" className="rewards-loyalty__bg-image" />
         </div>
@@ -165,7 +165,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="shell-card compliance-trust">
+      <section className="shell-card u-glass u-shadow-soft compliance-trust">
         <div className="compliance-trust__bg" aria-hidden="true">
           <AssetImage category="graphics" id="gfx_01" alt="" className="compliance-trust__bg-image" />
         </div>
@@ -191,7 +191,7 @@ export default function HomePage() {
 
           <div className="compliance-trust__grid">
             {COMPLIANCE_TRUST_ITEMS.map((item) => (
-              <article key={item.label} className="compliance-trust__card shell-stack">
+              <article key={item.label} className="compliance-trust__card shell-stack u-glass u-shadow-soft">
                 <span className="compliance-trust__card-icon">
                   <AssetImage category="icons" id={item.iconId} alt={item.label} className="compliance-trust__card-icon-image" />
                 </span>
@@ -200,7 +200,7 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="compliance-trust__cta">
+          <div className="compliance-trust__cta u-glow-red">
             <p>Ready to book emergency cover without the chaos?</p>
             <div className="compliance-trust__cta-actions">
               <CTAButton href="/schools" variant="primary">
@@ -214,12 +214,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="shell-card split-section">
+      <section className="shell-card u-glass u-shadow-soft split-section">
         <div className="split-section__graphic" aria-hidden="true">
           <AssetImage category="graphic" id="gfx_03" alt="" className="split-section__graphic-image" />
         </div>
         <div className="split-section__content">
-          <article className="split-card shell-stack">
+          <article className="split-card shell-stack u-glass u-shadow-soft">
             <p className="section-eyebrow">Schools</p>
             <h2>Run emergency cover with operational control</h2>
             <p>
@@ -232,7 +232,7 @@ export default function HomePage() {
             </div>
           </article>
 
-          <article className="split-card shell-stack">
+          <article className="split-card shell-stack u-glass u-shadow-soft">
             <p className="section-eyebrow">Candidates</p>
             <h2>Work in a fair, high-visibility system</h2>
             <p>
@@ -247,7 +247,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="shell-card trust-section">
+      <section className="shell-card u-glass u-shadow-soft trust-section">
         <div className="trust-section__media">
           <AssetImage category="graphic" id="gfx_01" alt="Compliance and trust visual" className="trust-section__media-image" />
         </div>

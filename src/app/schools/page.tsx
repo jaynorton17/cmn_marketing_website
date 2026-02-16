@@ -39,7 +39,7 @@ export default function SchoolsPage() {
         secondaryCta={{ label: "Enter CMN ONE", href: "/covermenow-one" }}
       />
 
-      <section className="shell-card schools-engine">
+      <section className="shell-card u-glass u-shadow-soft schools-engine">
         <div className="schools-engine__layout">
           <div className="schools-engine__content shell-stack">
             <h2 className="section-title">Live Availability Engine</h2>
@@ -70,7 +70,7 @@ export default function SchoolsPage() {
         </div>
       </section>
 
-      <section className="shell-card schools-tracking">
+      <section className="shell-card u-glass u-shadow-soft schools-tracking">
         <div className="schools-tracking__layout">
           <div className="schools-tracking__media">
             <AssetImage
@@ -96,7 +96,7 @@ export default function SchoolsPage() {
         </div>
       </section>
 
-      <section className="shell-card schools-compliance">
+      <section className="shell-card u-glass u-shadow-soft schools-compliance">
         <div className="schools-compliance__bg" aria-hidden="true">
           <AssetImage category="graphics" id="gfx_01" alt="" className="schools-compliance__bg-image" />
         </div>
@@ -109,7 +109,7 @@ export default function SchoolsPage() {
 
           <div className="schools-compliance__grid">
             {TRUST_ITEMS.map((item) => (
-              <article key={item.label} className="schools-compliance__card shell-stack">
+              <article key={item.label} className="schools-compliance__card shell-stack u-glass u-shadow-soft">
                 <span className="schools-compliance__card-icon">
                   <AssetImage
                     category="icons"
@@ -125,7 +125,7 @@ export default function SchoolsPage() {
         </div>
       </section>
 
-      <section className="shell-card schools-cta">
+      <section className="shell-card u-glass u-shadow-soft u-glow-red schools-cta">
         <h2>Ready to book emergency cover without the chaos?</h2>
         <div className="schools-cta__actions">
           <CTAButton href="/covermenow-one" variant="primary">

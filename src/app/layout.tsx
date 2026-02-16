@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Skip to content
         </a>
 
-        <header className="site-shell__header">
+        <header className="site-shell__header u-glass u-shadow-soft">
           <div className="shell-container site-shell__header-inner">
             <Link className="site-shell__brand" href="/">
               CoverMeNow ONE

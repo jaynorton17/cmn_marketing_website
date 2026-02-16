@@ -40,7 +40,7 @@ export default function CandidatesPage() {
         secondaryCta={{ label: "Book a Demo", href: "/contact-us" }}
       />
 
-      <section className="shell-card candidates-daily">
+      <section className="shell-card u-glass u-shadow-soft candidates-daily">
         <div className="candidates-daily__layout">
           <div className="candidates-daily__content shell-stack">
             <h2 className="section-title">Daily availability</h2>
@@ -71,7 +71,7 @@ export default function CandidatesPage() {
         </div>
       </section>
 
-      <section className="shell-card candidates-bookings">
+      <section className="shell-card u-glass u-shadow-soft candidates-bookings">
         <div className="candidates-bookings__layout">
           <div className="candidates-bookings__media">
             <AssetImage
@@ -94,7 +94,7 @@ export default function CandidatesPage() {
         </div>
       </section>
 
-      <section className="shell-card candidates-rewards">
+      <section className="shell-card u-glass u-shadow-soft candidates-rewards">
         <div className="candidates-rewards__bg" aria-hidden="true">
           <AssetImage category="graphics" id="gfx_06" alt="" className="candidates-rewards__bg-image" />
         </div>
@@ -126,7 +126,7 @@ export default function CandidatesPage() {
         </div>
       </section>
 
-      <section className="shell-card candidates-cta">
+      <section className="shell-card u-glass u-shadow-soft u-glow-red candidates-cta">
         <h2>Ready to get booked faster?</h2>
         <div className="candidates-cta__actions">
           <CTAButton href="/covermenow-one" variant="primary">

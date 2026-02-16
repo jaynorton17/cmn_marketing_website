@@ -41,14 +41,14 @@ export default function ServicesPage() {
         subtitle="Everything you need to run emergency cover properly."
       />
 
-      <section className="shell-card shell-stack">
+      <section className="shell-card u-glass u-shadow-soft shell-stack">
         <header className="section-head shell-stack">
           <p className="section-eyebrow">Core Infrastructure</p>
           <h2 className="section-title">Platform-led service modules</h2>
         </header>
         <div className="feature-grid feature-grid--two">
           {SERVICES.map((item) => (
-            <article key={item.title} className="feature-card shell-stack">
+            <article key={item.title} className="feature-card shell-stack u-glass u-shadow-soft">
               <div className="feature-card__icon">
                 <AssetImage category="icon" id={item.iconId} alt={item.title} className="feature-card__icon-image" />
               </div>

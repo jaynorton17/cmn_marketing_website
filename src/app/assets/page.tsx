@@ -122,7 +122,7 @@ function AssetSection({
   const sectionId = `section-${title.toLowerCase().replace(/\s+/g, "-")}`;
 
   return (
-    <section className="shell-card shell-stack" aria-labelledby={sectionId}>
+    <section className="shell-card u-glass u-shadow-soft shell-stack" aria-labelledby={sectionId}>
       <h2 id={sectionId} className="asset-section__title">
         {title} <span className="asset-section__count">({count})</span>
       </h2>
@@ -187,7 +187,7 @@ export default function AssetsPage() {
         </p>
       </header>
 
-      <section className="shell-card shell-stack asset-toolbar" aria-label="Asset filters">
+      <section className="shell-card u-glass u-shadow-soft shell-stack asset-toolbar" aria-label="Asset filters">
         <div className="asset-toolbar__field shell-stack">
           <label htmlFor="asset-category">Category</label>
           <select id="asset-category" value={category} onChange={(event) => setCategory(event.target.value as CategoryKey)}>
@@ -215,7 +215,7 @@ export default function AssetsPage() {
       </section>
 
       {visibleSections.length === 0 ? (
-        <section className="shell-card shell-stack">
+        <section className="shell-card u-glass u-shadow-soft shell-stack">
           <h2 className="asset-section__title">No results</h2>
           <p className="asset-page__lede">No assets match this filter.</p>
         </section>

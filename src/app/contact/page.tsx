@@ -17,7 +17,7 @@ export default function ContactPage() {
         subtitle="Let's get your school onboarded."
       />
 
-      <section className="shell-card contact-layout">
+      <section className="shell-card u-glass u-shadow-soft contact-layout">
         <div className="contact-layout__form">
           <h2>Start the conversation</h2>
           <ContactForm />

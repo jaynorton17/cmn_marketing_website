@@ -69,7 +69,7 @@ export default function MarketingHero({
   const resolvedLaptopId = isLaptopId(laptopId) ? laptopId : null;
 
   return (
-    <section className={`hero-shell${className ? ` ${className}` : ""}`}>
+    <section className={`hero-shell u-shadow-soft${className ? ` ${className}` : ""}`}>
       <div className="hero-shell__bg" aria-hidden="true">
         <AssetImage category="backgrounds" id={resolvedBackgroundId} alt="" className="hero-shell__bg-image" priority />
       </div>
@@ -80,7 +80,7 @@ export default function MarketingHero({
         </div>
       ) : null}
 
-      <div className="hero-shell__overlay" aria-hidden="true" />
+      <div className="hero-shell__overlay u-glow-red" aria-hidden="true" />
 
       <div className="hero-shell__content">
         <div className={`hero-layout${resolvedLaptopId ? "" : " hero-layout--single"}`}>
