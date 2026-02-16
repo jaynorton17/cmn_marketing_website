@@ -1,7 +1,8 @@
 import "./globals.css";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import CTAButton from "../components/CTAButton";
+import { tokenCssVariables } from "../styles/tokens";
 
 export const metadata = {
   title: {
@@ -19,13 +20,15 @@ const NAV_ITEMS = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+const bodyTokenStyle = tokenCssVariables as unknown as CSSProperties;
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   const year = new Date().getFullYear();
   const showAssetsLink = process.env.NODE_ENV !== "production";
 
   return (
     <html lang="en">
-      <body>
+      <body style={bodyTokenStyle}>
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>

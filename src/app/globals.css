@@ -1,14 +1,26 @@
 :root {
-  --bg: #0b0c10;
+  --bg: var(--token-color-bg, #0b0c10);
   --bg-alt: #11131a;
-  --text: #e7e9ee;
-  --muted: #a2a8b2;
-  --accent: #d02a2a;
+  --text: var(--token-color-text, #e7e9ee);
+  --muted: var(--token-color-muted, #a2a8b2);
+  --accent: var(--token-color-red-primary, #d02a2a);
   --accent-dark: #a81f1f;
-  --border: rgba(255, 255, 255, 0.1);
-  --panel: rgba(22, 24, 30, 0.82);
+  --red-glow: var(--token-color-red-glow, rgba(208, 42, 42, 0.22));
+  --border: var(--token-color-border, rgba(255, 255, 255, 0.1));
+  --panel: var(--token-color-surface, rgba(22, 24, 30, 0.82));
   --panel-strong: rgba(20, 22, 28, 0.92);
-  --shadow: 0 22px 50px rgba(0, 0, 0, 0.42);
+  --shadow: var(--token-shadow-soft, 0 22px 50px rgba(0, 0, 0, 0.42));
+  --shadow-glass: var(--token-shadow-glass, 0 18px 40px rgba(0, 0, 0, 0.38));
+  --radius-sm: var(--token-radius-sm, 0.5rem);
+  --radius-md: var(--token-radius-md, 0.9rem);
+  --radius-lg: var(--token-radius-lg, 1rem);
+  --radius-xl: var(--token-radius-xl, 1.15rem);
+  --radius-pill: var(--token-radius-pill, 999px);
+  --space-xs: var(--token-spacing-xs, 0.35rem);
+  --space-sm: var(--token-spacing-sm, 0.6rem);
+  --space-md: var(--token-spacing-md, 1rem);
+  --space-lg: var(--token-spacing-lg, 1.25rem);
+  --space-xl: var(--token-spacing-xl, 1.7rem);
 }
 
 * {
@@ -19,7 +31,7 @@ html,
 body {
   margin: 0;
   min-height: 100%;
-  background: radial-gradient(90rem 46rem at 50% -20%, rgba(208, 42, 42, 0.22), transparent 64%),
+  background: radial-gradient(90rem 46rem at 50% -20%, var(--red-glow), transparent 64%),
     linear-gradient(135deg, #12141a 0%, #101218 42%, #0b0c10 100%);
   color: var(--text);
   font-family: Outfit, "Segoe UI", sans-serif;
@@ -45,8 +57,8 @@ img {
   border: 1px solid rgba(208, 42, 42, 0.55);
   background: #181b23;
   color: var(--text);
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) calc(var(--space-md) - 0.25rem);
   text-decoration: none;
 }
 
@@ -92,9 +104,9 @@ img {
 .site-shell__nav a {
   display: inline-flex;
   text-decoration: none;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   border: 1px solid transparent;
-  padding: 0.4rem 0.65rem;
+  padding: calc(var(--space-sm) - 0.2rem) calc(var(--space-md) - 0.35rem);
   font-size: 0.93rem;
 }
 
@@ -126,7 +138,7 @@ img {
 }
 
 .site-shell__main {
-  padding-block: clamp(1.1rem, 2vw, 2rem) clamp(2.2rem, 3vw, 3.2rem);
+  padding-block: clamp(1.1rem, 2vw, calc(var(--space-xl) + 0.3rem)) clamp(2.2rem, 3vw, 3.2rem);
 }
 
 .site-shell__footer {
@@ -168,21 +180,21 @@ img {
 .shell-container {
   width: min(100%, 1240px);
   margin-inline: auto;
-  padding-inline: clamp(1rem, 2.4vw, 2rem);
+  padding-inline: clamp(var(--space-md), 2.4vw, calc(var(--space-xl) + 0.3rem));
 }
 
 .shell-stack {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--space-md);
 }
 
 .shell-card {
   border: 1px solid var(--border);
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   background: var(--panel);
-  box-shadow: var(--shadow);
-  padding: clamp(1rem, 2.2vw, 1.7rem);
+  box-shadow: var(--shadow-glass);
+  padding: clamp(var(--space-md), 2.2vw, var(--space-xl));
 }
 
 a:focus-visible,
@@ -200,13 +212,13 @@ summary:focus-visible {
   align-items: center;
   justify-content: center;
   border: 1px solid transparent;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  padding: 0.6rem 1rem;
+  padding: var(--space-sm) var(--space-md);
   font: inherit;
-  transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease;
+  transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
 }
 
 .btn:hover {
@@ -217,6 +229,7 @@ summary:focus-visible {
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color: #fff5f5;
   border-color: rgba(240, 135, 135, 0.5);
+  box-shadow: 0 8px 18px var(--red-glow);
 }
 
 .btn--primary:hover {
@@ -231,7 +244,7 @@ summary:focus-visible {
 
 .btn--secondary:hover {
   border-color: rgba(208, 42, 42, 0.62);
-  background: rgba(208, 42, 42, 0.14);
+  background: var(--red-glow);
 }
 
 .btn--ghost {
@@ -246,7 +259,7 @@ summary:focus-visible {
 }
 
 .marketing-page {
-  gap: 1.25rem;
+  gap: var(--space-lg);
 }
 
 .section-eyebrow {
@@ -259,7 +272,7 @@ summary:focus-visible {
 }
 
 .section-head {
-  gap: 0.5rem;
+  gap: var(--space-sm);
 }
 
 .section-title,
@@ -277,9 +290,9 @@ summary:focus-visible {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--border);
-  border-radius: 1.15rem;
+  border-radius: var(--radius-xl);
   min-height: clamp(20rem, 52vw, 33rem);
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-glass);
 }
 
 .hero-shell__bg,
@@ -318,7 +331,7 @@ summary:focus-visible {
   min-height: inherit;
   display: flex;
   align-items: stretch;
-  padding: clamp(1rem, 2.6vw, 2rem);
+  padding: clamp(var(--space-md), 2.6vw, calc(var(--space-xl) + 0.3rem));
 }
 
 .hero-layout {
@@ -334,7 +347,7 @@ summary:focus-visible {
 }
 
 .hero-copy {
-  gap: 0.72rem;
+  gap: calc(var(--space-sm) + 0.12rem);
 }
 
 .hero-title {
@@ -352,7 +365,7 @@ summary:focus-visible {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: var(--space-sm);
   margin-top: 0.15rem;
 }
 
@@ -364,11 +377,12 @@ summary:focus-visible {
 
 .hero-device-card {
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 1rem;
-  background: rgba(12, 14, 18, 0.72);
-  padding: 0.65rem;
+  border-radius: var(--radius-lg);
+  background: var(--panel);
+  padding: calc(var(--space-sm) + 0.05rem);
   max-width: 42rem;
   justify-self: end;
+  box-shadow: var(--shadow-glass);
 }
 
 .hero-device-brand {
@@ -382,7 +396,7 @@ summary:focus-visible {
 }
 
 .hero-device-media {
-  border-radius: 0.8rem;
+  border-radius: var(--radius-md);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.11);
   background: #0f1116;
@@ -463,10 +477,10 @@ summary:focus-visible {
 
 .feature-card {
   border: 1px solid var(--border);
-  border-radius: 0.9rem;
-  background: rgba(16, 18, 24, 0.74);
-  padding: 1rem;
-  gap: 0.55rem;
+  border-radius: var(--radius-md);
+  background: var(--panel);
+  padding: var(--space-md);
+  gap: calc(var(--space-sm) - 0.05rem);
 }
 
 .home-how .feature-card {
