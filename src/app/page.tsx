@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ASSETS } from "../assets/assetRegistry";
 import AssetImage from "../components/AssetImage";
 import MarketingHero from "../components/MarketingHero";
 
@@ -26,13 +27,17 @@ const HOW_IT_WORKS = [
   },
 ] as const;
 
+const HOME_HERO_LAPTOP_ID = ASSETS.laptopui.some((asset) => asset.id === "laptop_10") ? "laptop_10" : "laptop_01";
+
 export default function HomePage() {
   return (
     <div className="shell-container shell-stack marketing-page">
-      <MarketingHero backgroundId="bg_03" overlayGraphicId="gfx_02" overlayGraphicOpacity={0.22}>
+      <MarketingHero className="home-hero" backgroundId="bg_03" overlayGraphicId="gfx_02" overlayGraphicOpacity={0.1}>
         <div className="hero-layout">
           <div className="hero-copy shell-stack">
-            <p className="section-eyebrow">CoverMeNow ONE</p>
+            <div className="home-hero__brand">
+              <AssetImage category="logo" id="logo_main" alt="CoverMeNow ONE logo" className="home-hero__logo" />
+            </div>
             <h1 className="hero-title">Recruitment. Rebuilt for Education.</h1>
             <p className="hero-lede">Real-time availability. Faster bookings. Better cover.</p>
             <div className="hero-actions">
@@ -43,17 +48,17 @@ export default function HomePage() {
                 Join as a Candidate
               </Link>
             </div>
-            <p className="hero-helper">
-              You can confirm availability from 7:00pm the day before until 7:30am.
-            </p>
           </div>
 
-          <div className="hero-device-card">
-            <div className="hero-device-brand">
-              <AssetImage category="logo" id="logo_main" alt="CoverMeNow ONE logo" className="hero-device-logo" />
-            </div>
-            <div className="hero-device-media">
-              <AssetImage category="laptop" id="laptop_10" alt="CoverMeNow ONE dashboard preview" className="hero-device-image" />
+          <div className="home-hero__device">
+            <div className="hero-device-media home-hero__device-media">
+              <AssetImage
+                category="laptop"
+                id={HOME_HERO_LAPTOP_ID}
+                alt="CoverMeNow ONE dashboard preview"
+                className="hero-device-image"
+                priority
+              />
             </div>
           </div>
         </div>
