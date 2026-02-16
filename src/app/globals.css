@@ -615,6 +615,113 @@ summary:focus-visible {
   gap: 0.5rem;
 }
 
+.compliance-trust {
+  position: relative;
+  overflow: hidden;
+}
+
+.compliance-trust__bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.11;
+  pointer-events: none;
+}
+
+.compliance-trust__bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.compliance-trust__content {
+  position: relative;
+  z-index: 1;
+  gap: 1rem;
+}
+
+.compliance-trust__header {
+  display: grid;
+  gap: 0.95rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.compliance-trust__copy {
+  gap: 0.6rem;
+}
+
+.compliance-trust__copy .hero-lede {
+  margin: 0;
+}
+
+.compliance-trust__laptop {
+  width: min(100%, 22rem);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.9rem;
+  overflow: hidden;
+  background: rgba(12, 14, 18, 0.8);
+  aspect-ratio: 16 / 10;
+}
+
+.compliance-trust__laptop-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.compliance-trust__grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.compliance-trust__card {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.85rem;
+  background: rgba(15, 17, 22, 0.76);
+  padding: 0.9rem;
+  gap: 0.55rem;
+}
+
+.compliance-trust__card h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.compliance-trust__card-icon {
+  width: 2.4rem;
+  aspect-ratio: 1;
+  border-radius: 0.68rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.35rem;
+}
+
+.compliance-trust__card-icon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.compliance-trust__cta {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.9rem;
+  background: rgba(13, 15, 20, 0.82);
+  padding: 0.95rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.compliance-trust__cta p {
+  margin: 0;
+}
+
+.compliance-trust__cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
 .feature-card h3,
 .feature-card p {
   margin: 0;
@@ -1077,6 +1184,19 @@ summary:focus-visible {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 1.25rem;
     align-items: center;
+  }
+
+  .compliance-trust__header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .compliance-trust__laptop {
+    justify-self: end;
+  }
+
+  .compliance-trust__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .feature-grid--three {

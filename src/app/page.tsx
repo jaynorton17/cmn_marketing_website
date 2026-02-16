@@ -40,6 +40,12 @@ const REWARDS_LOYALTY_POINTS = [
   "Partner programme for schools",
 ] as const;
 const REWARDS_LOYALTY_LAPTOP_ID = ASSETS.laptopui.some((asset) => asset.id === "laptop_12") ? "laptop_12" : "laptop_08";
+const COMPLIANCE_TRUST_ITEMS = [
+  { label: "Vetted candidates", iconId: "icon_05" },
+  { label: "Clear booking history", iconId: "icon_06" },
+  { label: "Support + escalation", iconId: "icon_07" },
+] as const;
+const COMPLIANCE_TRUST_LAPTOP_ID = ASSETS.laptopui.some((asset) => asset.id === "laptop_06") ? "laptop_06" : "laptop_01";
 
 export default function HomePage() {
   return (
@@ -153,6 +159,55 @@ export default function HomePage() {
             <div>
               <Link className="btn btn--primary" href="/candidates">
                 Join as a Candidate
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="shell-card compliance-trust">
+        <div className="compliance-trust__bg" aria-hidden="true">
+          <AssetImage category="graphics" id="gfx_01" alt="" className="compliance-trust__bg-image" />
+        </div>
+
+        <div className="compliance-trust__content shell-stack">
+          <div className="compliance-trust__header">
+            <div className="compliance-trust__copy shell-stack">
+              <h2 className="section-title">Compliance-first, always</h2>
+              <p className="hero-lede">
+                Audit trail, safeguarding checks, and documentation status — visible at every step.
+              </p>
+            </div>
+
+            <div className="compliance-trust__laptop">
+              <AssetImage
+                category="laptopui"
+                id={COMPLIANCE_TRUST_LAPTOP_ID}
+                alt="Compliance dashboard preview"
+                className="compliance-trust__laptop-image"
+              />
+            </div>
+          </div>
+
+          <div className="compliance-trust__grid">
+            {COMPLIANCE_TRUST_ITEMS.map((item) => (
+              <article key={item.label} className="compliance-trust__card shell-stack">
+                <span className="compliance-trust__card-icon">
+                  <AssetImage category="icons" id={item.iconId} alt={item.label} className="compliance-trust__card-icon-image" />
+                </span>
+                <h3>{item.label}</h3>
+              </article>
+            ))}
+          </div>
+
+          <div className="compliance-trust__cta">
+            <p>Ready to book emergency cover without the chaos?</p>
+            <div className="compliance-trust__cta-actions">
+              <Link className="btn btn--primary" href="/schools">
+                Book Emergency Cover
+              </Link>
+              <Link className="btn btn--ghost" href="/contact-us">
+                Book a Demo
               </Link>
             </div>
           </div>
