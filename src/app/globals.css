@@ -447,6 +447,111 @@ summary:focus-visible {
   background: rgba(18, 20, 26, 0.84);
 }
 
+.live-availability {
+  position: relative;
+  overflow: hidden;
+}
+
+.live-availability__bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.live-availability__bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.live-availability__layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.live-availability__visual {
+  position: relative;
+  order: 1;
+}
+
+.live-availability__laptop {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.95rem;
+  overflow: hidden;
+  background: rgba(12, 14, 18, 0.8);
+  aspect-ratio: 16 / 10;
+  width: min(100%, 600px);
+  margin-inline: auto;
+}
+
+.live-availability__laptop-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.live-availability__floating {
+  position: absolute;
+  right: 0.4rem;
+  bottom: 0.45rem;
+  width: min(38%, 11rem);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.7rem;
+  overflow: hidden;
+  background: rgba(14, 16, 21, 0.86);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.32);
+}
+
+.live-availability__floating-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.live-availability__content {
+  order: 2;
+  gap: 0.7rem;
+}
+
+.live-availability__content .hero-lede {
+  margin: 0;
+}
+
+.live-availability__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.live-availability__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.live-availability__item-icon {
+  width: 2.3rem;
+  aspect-ratio: 1;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.35rem;
+  flex-shrink: 0;
+}
+
+.live-availability__item-icon-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .feature-card h3,
 .feature-card p {
   margin: 0;
@@ -889,6 +994,20 @@ summary:focus-visible {
 
   .home-hero__device {
     justify-self: end;
+  }
+
+  .live-availability__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .live-availability__content {
+    order: 1;
+  }
+
+  .live-availability__visual {
+    order: 2;
   }
 
   .feature-grid--three {

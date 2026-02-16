@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ASSETS } from "../assets/assetRegistry";
 import AssetImage from "../components/AssetImage";
 import MarketingHero from "../components/MarketingHero";
 
@@ -25,6 +26,14 @@ const HOW_IT_WORKS = [
     copy: "Confirmations, audit trail and support are built-in — no messy spreadsheets.",
   },
 ] as const;
+
+const LIVE_AVAILABILITY_POINTS = [
+  { iconId: "icon_01", label: "Available candidates only" },
+  { iconId: "icon_07", label: "Instant confirmations" },
+  { iconId: "icon_06", label: "Support when it matters" },
+] as const;
+
+const LIVE_AVAILABILITY_LAPTOP_ID = ASSETS.laptopui.some((asset) => asset.id === "laptop_11") ? "laptop_11" : "laptop_01";
 
 export default function HomePage() {
   return (
@@ -56,6 +65,53 @@ export default function HomePage() {
               <p>{item.copy}</p>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="shell-card live-availability">
+        <div className="live-availability__bg" aria-hidden="true">
+          <AssetImage category="graphics" id="gfx_02" alt="" className="live-availability__bg-image" />
+        </div>
+
+        <div className="live-availability__layout">
+          <div className="live-availability__visual">
+            <div className="live-availability__laptop">
+              <AssetImage
+                category="laptopui"
+                id={LIVE_AVAILABILITY_LAPTOP_ID}
+                alt="Live availability dashboard preview"
+                className="live-availability__laptop-image"
+              />
+            </div>
+
+            <div className="live-availability__floating" aria-hidden="true">
+              <AssetImage category="graphics" id="gfx_05" alt="" className="live-availability__floating-image" />
+            </div>
+          </div>
+
+          <div className="live-availability__content shell-stack">
+            <h2 className="section-title">Live availability, in real time</h2>
+            <p className="hero-lede">
+              Confirmations drive everything — so schools stop guessing and candidates stop waiting.
+            </p>
+
+            <ul className="live-availability__list">
+              {LIVE_AVAILABILITY_POINTS.map((point) => (
+                <li key={point.label} className="live-availability__item">
+                  <span className="live-availability__item-icon">
+                    <AssetImage category="icons" id={point.iconId} alt={point.label} className="live-availability__item-icon-image" />
+                  </span>
+                  <span>{point.label}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div>
+              <Link className="btn btn--ghost" href="/schools">
+                See how it works
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
