@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ASSETS } from "../../assets/assetRegistry";
 import AssetImage from "../../components/AssetImage";
+import CTAButton from "../../components/CTAButton";
 import MarketingHero from "../../components/MarketingHero";
 
 export const metadata: Metadata = {
@@ -129,12 +129,12 @@ export default function CandidatesPage() {
       <section className="shell-card candidates-cta">
         <h2>Ready to get booked faster?</h2>
         <div className="candidates-cta__actions">
-          <Link className="btn btn--primary" href="/covermenow-one">
+          <CTAButton href="/covermenow-one" variant="primary">
             Enter CMN ONE
-          </Link>
-          <Link className="btn btn--ghost" href="/contact-us">
+          </CTAButton>
+          <CTAButton href="/contact-us" variant="secondary">
             Contact us
-          </Link>
+          </CTAButton>
         </div>
       </section>
     </div>

@@ -103,6 +103,28 @@ img {
   background: rgba(208, 42, 42, 0.12);
 }
 
+.site-shell__header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-left: auto;
+}
+
+.site-shell__header-ctas {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
+.site-shell__header-ctas .btn {
+  padding: 0.45rem 0.78rem;
+  font-size: 0.88rem;
+}
+
 .site-shell__main {
   padding-block: clamp(1.1rem, 2vw, 2rem) clamp(2.2rem, 3vw, 3.2rem);
 }
@@ -201,15 +223,26 @@ summary:focus-visible {
   filter: brightness(1.04);
 }
 
+.btn--secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.34);
+  color: var(--text);
+}
+
+.btn--secondary:hover {
+  border-color: rgba(208, 42, 42, 0.62);
+  background: rgba(208, 42, 42, 0.14);
+}
+
 .btn--ghost {
   background: rgba(18, 20, 26, 0.7);
-  border-color: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.16);
   color: var(--text);
 }
 
 .btn--ghost:hover {
-  border-color: rgba(208, 42, 42, 0.55);
-  background: rgba(208, 42, 42, 0.16);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(26, 29, 36, 0.85);
 }
 
 .marketing-page {
@@ -1567,6 +1600,13 @@ summary:focus-visible {
 
   .asset-grid--icons {
     grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .site-shell__header-right {
+    width: 100%;
+    justify-content: space-between;
   }
 }
 

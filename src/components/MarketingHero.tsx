@@ -1,5 +1,5 @@
-import Link from "next/link";
 import AssetImage from "./AssetImage";
+import CTAButton, { type CTAButtonVariant } from "./CTAButton";
 import {
   ASSETS,
   type BackgroundId,
@@ -10,6 +10,7 @@ import {
 type HeroCta = {
   label: string;
   href: string;
+  variant?: CTAButtonVariant;
 };
 
 type MarketingHeroProps = {
@@ -98,14 +99,14 @@ export default function MarketingHero({
             {primaryCta || secondaryCta ? (
               <div className="hero-actions">
                 {primaryCta ? (
-                  <Link className="btn btn--primary" href={primaryCta.href}>
+                  <CTAButton href={primaryCta.href} variant={primaryCta.variant ?? "primary"}>
                     {primaryCta.label}
-                  </Link>
+                  </CTAButton>
                 ) : null}
                 {secondaryCta ? (
-                  <Link className="btn btn--ghost" href={secondaryCta.href}>
+                  <CTAButton href={secondaryCta.href} variant={secondaryCta.variant ?? "secondary"}>
                     {secondaryCta.label}
-                  </Link>
+                  </CTAButton>
                 ) : null}
               </div>
             ) : null}
